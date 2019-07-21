@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 public class Application {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		String CMD_clusterLogin = "oc login https://console.115.127.24.186.nip.io:8443 -u=shahidul -p=leads@123";
+		String CMD_clusterLogin = "oc login https://console.ip.nip.io:8443 -u= -p=";
 		String CMD_metrics = "oc adm top node etcd.ngfs.com";
 		Process loginToCluster = Runtime.getRuntime().exec(CMD_clusterLogin);
 		loginToCluster.waitFor();
@@ -19,9 +19,9 @@ public class Application {
 				int lastIndexOfPercentage = line.lastIndexOf('%');
 				int memoryUsages = Integer.parseInt(line.substring(lastIndexOfPercentage - 2, lastIndexOfPercentage));
 				if (memoryUsages > 90) {
-					Runtime.getRuntime().exec("sshpass -p Open@1234 ssh root@115.127.24.184 init 6 ");
-					Runtime.getRuntime().exec("sshpass -p Open@1234 ssh root@115.127.24.186 init 6 ");
-					Runtime.getRuntime().exec("sshpass -p Open@1234 ssh root@115.127.24.188 init 6 ");
+					Runtime.getRuntime().exec("sshpass -p Open@1234 ssh root@ip1 init 6 ");
+					Runtime.getRuntime().exec("sshpass -p Open@1234 ssh root@ip2 init 6 ");
+					Runtime.getRuntime().exec("sshpass -p Open@1234 ssh root@ip3 init 6 ");
 				}
 			} catch (Exception e) {
 			}
