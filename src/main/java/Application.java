@@ -7,6 +7,7 @@ public class Application {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		String CMD_clusterLogin = "oc login https://console.ip.nip.io:8443 -u= -p=";
 		String CMD_metrics = "oc adm top node etcd.ngfs.com";
+		String CMD_gc="oc get pods --all-namespaces | grep Evicted | xargs oc delete pod label=Evicted";
 		Process loginToCluster = Runtime.getRuntime().exec(CMD_clusterLogin);
 		loginToCluster.waitFor();
 		while (true) {
